@@ -1,12 +1,36 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+      <Navigation />
+   
+    <router-view :events="events" />
   </div>
 </template>
+
+<script>
+import Navigation from "@/components/Navigation.vue";
+
+export default {
+  data: () => ({
+    events: {},
+  }),
+  components: {
+    Navigation,
+  },
+  beforeMount() {
+    let promise = new Promise((resolve) => {
+      resolve(this.$store.dispatch("getAllEvents"));
+    });
+    promise.then(() => {
+      this.events = this.$store.state.events;
+    });
+  },
+  methods: {
+    getImgURL() {
+      return "src/assets/logo.png";
+    },
+  },
+};
+</script>
 
 <style>
 #app {
