@@ -70,7 +70,7 @@ nav {
 
 .mainImage {
   background-color: white;
-  background-image: url("../assets/meetupbg.png");
+  background-image: url("../assets/meetupbg.jpg");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
