@@ -70,11 +70,11 @@ nav {
 
 .mainImage {
   background-color: white;
-  background-image: url("../assets/destopVirtualMeet.jpeg");
+  background-image: url("../assets/meetupbg.png");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: contain;
-  height: 400px;
+  background-size: cover;
+  height: 450px;
 }
 
 .logoImg {

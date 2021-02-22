@@ -74,7 +74,7 @@ export default {
 <style scoped>
 .card {
   margin: 20px auto;
-  background: #cacac4;
+  background: #dadada;
   padding: 10px 20px;
   border-radius: 4px;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 5%);
