@@ -1,15 +1,8 @@
 <template>
-  <div class="card">
-    <div class="aboutEvent" @click="goTo(event.id)">
-      <div class="titleandStatus">
-        <h1>{{ event.title }}</h1>
+  <div class="card" @click="display()">
+      <h2>{{ event.title}}</h2>
         <h3>{{ event.status }}</h3>
-      </div>
 
-      <img :src="event.image" alt="image" />
-      <h4>When: {{ event.date }}</h4>
-      <h3>Where: {{ event.location }}</h3>
-    </div>
   </div>
 </template>
 
@@ -19,12 +12,14 @@ export default {
     event: Object,
   },
   computed: {
+      display(){
+        console.log("the event: ",this.event)
+        return this.event
+      }
   },
 
   methods: {
-    goTo(id) {
-      this.$router.push(`/eventInfo/${id}`);
-    },
+   
    
   },
 };
