@@ -2,13 +2,13 @@
   <div class="card">
     <div class="aboutEvent" @click="goTo(event.id)">
       <div class="titleandStatus">
-        <h1>{{ event.title }}</h1>
-        <h3>{{ event.status }}</h3>
+        <h1 class="title">{{ event.title }}</h1>
+        <h3 class="status">{{ event.status }}</h3>
       </div>
 
-      <img :src="event.image" alt="image" />
-      <h4>When: {{ event.date }}</h4>
-      <h3>Where: {{ event.location }}</h3>
+      <img :src="event.image" alt="image" class="image"/>
+      <h4 class = "date" >When: {{ event.date }}</h4>
+      <h3 class="location" >Where: {{ event.location }}</h3>
     </div>
   </div>
 </template>

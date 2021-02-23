@@ -1,5 +1,5 @@
 import { createLocalVue, mount, shallowMount } from "@vue/test-utils";
-import Home from "@/views/Home.vue";
+import Events from "@/views/Events.vue";
 import App from "@/App.vue";
 import index from "@/store/index.js";
 import Vuex from "vuex";
@@ -7,13 +7,13 @@ import VueRouter from "vue-router";
 
 const store = new Vuex.Store({ index });
 
-describe('Home.vue', () => {
+describe('Events.vue', () => {
     let localVue;
     beforeEach(() => {
         localVue = createLocalVue();
     });
 
-    it("should, when the App component is mounted, dispach an action to Vuex", () => {
+    it("It should fetch all events from store when the app is mounted.", () => {
         localVue.use(VueRouter);
         const router = new VueRouter();
 

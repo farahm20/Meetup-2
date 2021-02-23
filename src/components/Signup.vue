@@ -1,8 +1,19 @@
 <template>
-  <div class="card" @click="display()">
-      <h2>{{ event.title}}</h2>
-        <h3>{{ event.status }}</h3>
+  <div class="card" >
+    <div v-show="event.status === 'finished'" class="reviewBox">
+      <input type="text" placeholder="name" v-model="inputText.name" />
+      <input type="text" placeholder="email" v-model="inputText.email" />
+      <label for="review">Review for {{ event.title }}:</label>
+      <textarea
+        id="reviewbox"
+        name="reviewbox"
+        rows="40"
+        cols="100"
+        v-model="inputText.comment"
+      ></textarea>
+      <button class="sendReview" @click="sendReview()"> Add review </button>
 
+    </div>
   </div>
 </template>
 
@@ -11,17 +22,26 @@ export default {
   props: {
     event: Object,
   },
-  computed: {
-      display(){
-        console.log("the event: ",this.event)
-        return this.event
+  data() {
+      return {
+          inputText: {
+              name: "",
+              email: "",
+              comment: "",
+          },
       }
   },
-
   methods: {
-   
-   
+      sendReview() {
+          this.$store.dispatch("addReviewForEvent", this.inputText);
+          console.log("Review info :", this.inputText);
+      }
   },
+  computed: {
+    
+  },
+
+ 
 };
 </script>
 

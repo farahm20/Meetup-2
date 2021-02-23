@@ -8,25 +8,27 @@
 
       <img :src="event.image" alt="image" />
       <h3>Date: {{ event.date }}</h3>
-      <h2>Description: {{ event.description }}</h2>     
+      <h2>Description: {{ event.description }}</h2>
     </section>
     <Signup :event="event" />
-    <Comments v-for="review of event.reviews" :key="review.id" :review="review" />
-
+    <Comments
+      v-for="review of event.reviews"
+      :key="review.id"
+      :review="review"
+    />
   </main>
-
 </template>
 
 <script>
-import Signup from './../components/Signup'
-import Comments from './../components/Comments'
+import Signup from "./../components/Signup";
+import Comments from "./../components/Comments";
 export default {
   props: {
     events: Array,
   },
   components: {
-     Signup, 
-    Comments
+    Signup,
+    Comments,
   },
   methods: {},
   computed: {
@@ -38,12 +40,21 @@ export default {
         image: this.selectedEvent
           ? this.selectedEvent.image
           : "No image available",
-        description: this.selectedEvent
-          ? this.selectedEvent.description
-          : "No description available",
         date: this.selectedEvent
           ? this.selectedEvent.date
           : "No date available",
+        location: this.selectedEvent
+          ? this.selectedEvent.location
+          : "No date available",
+        status: this.selectedEvent
+          ? this.selectedEvent.status
+          : "No status available",
+        review: this.selectedEvent
+          ? this.selectedEvent.status
+          : "No status available",
+        description: this.selectedEvent
+          ? this.selectedEvent.description
+          : "No description available",
       };
       return eventInfo;
     },
