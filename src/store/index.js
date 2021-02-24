@@ -9,9 +9,10 @@ export default new Vuex.Store({
     state: {
         // apiUrl: "https://api.jsonbin.io/b/602e519e0665b21b00b96d0d/4",
         // apiUrl: "https://api.jsonbin.io/b/603577dbf1be644b0a63e406",
+        //example
         apiUrl: "https://api.jsonbin.io/v3/b/603577dbf1be644b0a63e406",
-        apiKey: "$2b$10$jLA6wytLYVhKQGfD3ITFvuL/QNpWWaNMUAgAAwic4GMEK9KMqFzOu", 
-    
+        apiKey: "$2b$10$jLA6wytLYVhKQGfD3ITFvuL/QNpWWaNMUAgAAwic4GMEK9KMqFzOu",
+
         events: {
             type: Array,
             default: []
@@ -28,14 +29,14 @@ export default new Vuex.Store({
         async getAllEvents(ctx) {
             let options = {
                 headers: {
-                  "Content-Type": "application/json",
-                  "X-Master-Key": ctx.state.apiKey,
-                  "X-Bin-Versioning": "false"
+                    "Content-Type": "application/json",
+                    "X-Master-Key": ctx.state.apiKey,
+                    "X-Bin-Versioning": "false"
                 }
-              }
-              let data = await axios.get(`${ctx.state.apiUrl}`, options)
-              ctx.commit('showEvents', data.data.record.events)
-
+            }
+            let data = await axios.get(`${ctx.state.apiUrl}`, options)
+            ctx.commit('showEvents', data.data.record.events)
+            console.log(data)
             // try {
             //     //let event = await axios.get(config.apiUrl)
             //     let event = await axios.get(`${ctx.state.apiUrl}`)
@@ -58,7 +59,7 @@ export default new Vuex.Store({
             try {
                 let data = await axios.put(`${ctx.state.apiUrl}`, {
                     events: ctx.state.events,
-                    reviews: value 
+                    reviews: value
                 }, options)
                 ctx.commit('showEvents', data.data.record.events)
                 console.log('They data afte try', data)

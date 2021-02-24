@@ -11,11 +11,15 @@
       <h2>Description: {{ event.description }}</h2>
     </section>
     <Signup :event="event" />
-    <Comments
-      v-for="review of event.reviews"
-      :key="review.id"
-      :review="review"
-    />
+    
+    <div class="comments">
+      <Comments
+        v-for="review of event.reviews"
+        :key="review.name"
+        :review="review"
+      />
+    </div>
+    
   </main>
 </template>
 
@@ -45,22 +49,24 @@ export default {
           : "No date available",
         location: this.selectedEvent
           ? this.selectedEvent.location
-          : "No date available",
+          : "No location available",
         status: this.selectedEvent
           ? this.selectedEvent.status
           : "No status available",
-        review: this.selectedEvent
-          ? this.selectedEvent.status
-          : "No status available",
+        reviews: this.selectedEvent
+          ? this.selectedEvent.reviews
+          : "No reviews available",
         description: this.selectedEvent
           ? this.selectedEvent.description
           : "No description available",
       };
+      console.log(eventInfo);
       return eventInfo;
     },
     selectedEvent() {
       if (this.$route !== undefined) {
-        return this.events.find((event) => event.id == this.$route.params.id);
+        let data =  this.events.find((event) => event.id == this.$route.params.id);
+        return data;
       } else {
         return this.eventInfo;
       }

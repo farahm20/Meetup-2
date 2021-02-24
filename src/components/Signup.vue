@@ -1,18 +1,17 @@
 <template>
-  <div class="card" >
+  <div class="card">
     <div v-show="event.status === 'finished'" class="reviewBox">
       <input type="text" placeholder="name" v-model="inputText.name" />
       <input type="text" placeholder="email" v-model="inputText.email" />
       <label for="review">Review for {{ event.title }}:</label>
       <textarea
-        id="reviewbox"
-        name="reviewbox"
+        id=""
+        name=""
         rows="40"
         cols="100"
         v-model="inputText.comment"
       ></textarea>
-      <button class="sendReview" @click="sendReview()"> Add review </button>
-
+      <button class="sendReview" @click="sendReview()">Add review</button>
     </div>
   </div>
 </template>
@@ -23,25 +22,24 @@ export default {
     event: Object,
   },
   data() {
-      return {
-          inputText: {
-              name: "",
-              email: "",
-              comment: "",
-          },
-      }
+    return {
+      inputText: {
+        name: "",
+        email: "",
+        comment: "",
+      },
+    };
   },
   methods: {
-      sendReview() {
-          this.$store.dispatch("addReviewForEvent", this.inputText);
-          console.log("Review info :", this.inputText);
-      }
+    sendReview() {
+      let newReview = this.event.reviews;
+      console.log("Review info :", newReview);
+      newReview.push(this.inputText);
+      console.log("Event now :", this.event);
+      this.$store.dispatch("addReviewForEvent", this.event);
+    },
   },
-  computed: {
-    
-  },
-
- 
+  computed: {},
 };
 </script>
 
