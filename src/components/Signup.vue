@@ -1,9 +1,10 @@
 <template>
   <div class="card">
     <div v-show="event.status === 'finished'" class="reviewBox">
+      <h2>Review for "{{ event.title }}"</h2>
+      <span></span>
       <input type="text" placeholder="name" v-model="inputText.name" />
       <input type="text" placeholder="email" v-model="inputText.email" />
-      <label for="review">Review for {{ event.title }}:</label>
       <textarea
         id=""
         name=""
@@ -12,6 +13,16 @@
         v-model="inputText.comment"
       ></textarea>
       <button class="sendReview" @click="sendReview()">Add review</button>
+      <p>
+        Take a look at what others thought about this event below...
+      </p>
+    </div>
+
+    <div v-show="event.status !== 'finished'">
+      <h2>Find it interesting. Join the Meetup!</h2>
+      <input type="text" placeholder="name" v-model="inputText.name" />
+      <input type="text" placeholder="email" v-model="inputText.email" />
+      <button class="sendUser" @clcik="sendUser()">Signup</button>
     </div>
   </div>
 </template>
@@ -32,12 +43,41 @@ export default {
   },
   methods: {
     sendReview() {
-      let newReview = this.event.reviews;
-      console.log("Review info :", newReview);
-      newReview.push(this.inputText);
-      console.log("Event now :", this.event);
-      this.$store.dispatch("addReviewForEvent", this.event);
+      if (this.inputText.name >= 0) {
+        alert("Name field cannot be left empty");
+      } else if (this.inputText.email >= 0) {
+        alert("Email field cen not be left empty");
+      } else if (this.inputText.comment >= 0) {
+        alert("Your opinion matters, please leave a comment.");
+      } else {
+        let newReview = this.event.reviews;
+        newReview.push(this.inputText);
+        this.$store.dispatch("addReviewForEvent", this.event);
+         this.clearInput();
+      }
     },
+    sendUser() {
+      if (this.inputText.name >= 0) {
+        alert("Name field cannot be left empty");
+      } else if (this.inputText.email >= 0) {
+        alert("Email field cen not be left empty");
+      } else {
+        console.log("Login user form.");
+        let newUser = this.event.users;
+        newUser.push(this.inputText);
+        this.$store.dispatch("addUserForEvent", this.event);
+        this.clearInput();
+      }
+    },
+    clearInput() {
+        let newInputText = {
+            name: "",
+            email: "",
+            comment: "",
+        };
+        this.inputText = newInputText;
+        return this.inputText;
+    }
   },
   computed: {},
 };
@@ -47,20 +87,14 @@ export default {
 .card {
   margin: 20px auto;
   background: #dadada;
-  padding: 10px 20px;
+ padding: 10px 3px;
   border-radius: 4px;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 5%);
-  border-left: 15px solid black;
   display: flex;
-  align-items: flex-end;
-  flex-direction: row;
-  justify-content: space-between;
+ 
   text-align: left;
 }
-.card img {
-  width: 200px;
-  height: 160px;
-}
+
 button {
   font-family: "PT Serif", serif;
   font-size: 20px;
@@ -85,5 +119,16 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+label {
+    color: black;
+}
+p {
+    font-size: 20px;
+    color: black;
+}
+
+h2 {
+    font-size: 20px;
 }
 </style>

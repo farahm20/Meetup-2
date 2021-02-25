@@ -27,8 +27,7 @@ describe('Event.vue', () => {
             }
         })
 
-        let getAllEvents = wrapper.findAll('.card').exists();
-        console.log(getAllEvents);
+        let getAllEvents = wrapper.findAll('.events').exists();
         expect(getAllEvents).toBeTruthy();
     })
 
@@ -63,7 +62,7 @@ describe('Event.vue', () => {
         const expectedLocation = "Where: Riyadh, Saudi Arabia";
         const actualLocation = wrapper.find(".location").text();
 
-        const actualstatus = "ongoing";
+        const actualstatus = "Status: ongoing";
         const expectedStatus = wrapper.find(".status").text();
 
         expect(actualTitle).toBe(expectedTitle);
@@ -94,33 +93,33 @@ describe('Event.vue', () => {
         expect(getImage).toBeTruthy();
     })
 
-    // it('It should display the explore button.', () => {
-    //     const localVue = createLocalVue()
-    //     localVue.use(Vuex)
-    //     const store = new Vuex.Store(index)
+    it('It should display the explore button.', () => {
+        const localVue = createLocalVue()
+        localVue.use(Vuex)
+        const store = new Vuex.Store(index)
 
-    //     const wrapper = shallowMount(AllEvents, {
-    //         propsData: {
-    //             event: {
-    //                 "id": 1,
-    //                 "title": "Story behind the skyline in dersert.",
+        const wrapper = shallowMount(AllEvents, {
+            propsData: {
+                event: {
+                    "id": 1,
+                    "title": "Story behind the skyline in dersert.",
                   
-    //             },
-    //             localVue,
-    //             store
-    //         }
-    //     })
+                },
+                localVue,
+                store
+            }
+        })
 
-    //     const exploreButton = wrapper.findAll('button');
-    //     const exploreButtonExist = exploreButton.exists();
+        const exploreButton = wrapper.findAll('button');
+        const exploreButtonExist = exploreButton.exists();
 
-    //     console.log(exploreButton);
-    //     console.log(exploreButtonExist);
+        console.log(exploreButton);
+        console.log(exploreButtonExist);
 
 
-    //     expect(exploreButton).toBeTruthy();
-    //     expect(exploreButtonExist).toBeTruthy();
-    // })
+        expect(exploreButton).toBeTruthy();
+        expect(exploreButtonExist).toBeTruthy();
+    })
 
 
 })

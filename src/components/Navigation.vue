@@ -31,9 +31,7 @@ export default {
       menuItems: [
         { title: "MeetUps", link: "/events" },
         { title: "About", link: "/" },
-        { title: "Profile", link: "/profile" },
-        { title: "SignUp", link: "/signup" },
-        { title: "SignIn", link: "/signin" },
+        { title: "LogIn", link: "/login" },
       ],
     };
   },
@@ -68,14 +66,14 @@ nav {
   width: 100%;
 }
 
-.mainImage {
+/* .mainImage {
   background-color: white;
   background-image: url("../assets/meetupbg.jpg");
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
+  background-position: center; 
+  background-repeat: no-repeat; 
   background-size: cover;
   height: 450px;
-}
+} */
 
 .logoImg {
   overflow: hidden;

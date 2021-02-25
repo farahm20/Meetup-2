@@ -1,14 +1,12 @@
 <template>
-  <div class="card">
+  <div class="events">
     <div class="aboutEvent" @click="goTo(event.id)">
-      <div class="titleandStatus">
-        <h1 class="title">{{ event.title }}</h1>
-        <h3 class="status">{{ event.status }}</h3>
-      </div>
-
-      <img :src="event.image" alt="image" class="image"/>
-      <h4 class = "date" >When: {{ event.date }}</h4>
-      <h3 class="location" >Where: {{ event.location }}</h3>
+      <h1 class="title">{{ event.title }}</h1>
+      <h3 class="status">Status: {{ event.status }}</h3>
+      <img :src="event.image" alt="image" class="image" />
+      <h4 class="date">When: {{ event.date }}</h4>
+      <h3 class="location">Where: {{ event.location }}</h3>
+      <button class="btn"  @click="goTo(event.id)"> Explore event </button>
     </div>
   </div>
 </template>
@@ -18,39 +16,45 @@ export default {
   props: {
     event: Object,
   },
-  computed: {
-  },
+  computed: {},
 
   methods: {
     goTo(id) {
       this.$router.push(`/eventInfo/${id}`);
     },
-   
   },
 };
 </script>
 
 <style scoped>
-.card {
-  margin: 20px auto;
+.events {
+  margin: 20px;
   background: #dadada;
-  padding: 10px 20px;
+  padding: 1rem;
   border-radius: 4px;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 5%);
-  border-left: 15px solid black;
+  border-style: solid;
+  float: left;
+  /* display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center; */
+  width: 450px;
+  height: 500px;
   display: flex;
-  align-items: flex-end;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: left;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
-.card img {
-  width: 200px;
+.events img {
+  width: 300px;
   height: 160px;
 }
 button {
   font-family: "PT Serif", serif;
-  font-size: 20px;
+  font-size: 18px;
   text-decoration: none;
   height: 2rem;
   margin: 1rem 0;
@@ -66,6 +70,10 @@ button {
 }
 .registerEvent span {
   float: left;
+}
+.status {
+  font-size: 15px;
+  color: #065175;
 }
 
 .titleandStatus {

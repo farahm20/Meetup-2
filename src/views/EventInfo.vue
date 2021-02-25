@@ -1,17 +1,21 @@
 <template>
   <main id="eventInfo">
     <section class="meetupInfo">
-      <div class="titleandStatus">
-        <h1>Title: {{ event.title }}</h1>
-        <h1>Status: {{ event.status }}</h1>
-      </div>
-
-      <img :src="event.image" alt="image" />
-      <h3>Date: {{ event.date }}</h3>
-      <h2>Description: {{ event.description }}</h2>
+      <h4 class="status">
+        Status: {{ event.status || "No status avaialble" }}
+      </h4>
+      <h1 class="title">{{ event.title || "No title avaialble" }}</h1>
+      <img :src="event.image || 'No image avaialble'" alt="image" />
+      <h3 class="date">When: {{ event.date || "No date avaialble" }}</h3>
+      <h4 class="location">
+        Where: {{ event.location || "No location avaialble" }}
+      </h4>
+      <p class="description">
+        {{ event.description || "No description avaialble" }}
+      </p>
     </section>
     <Signup :event="event" />
-    
+
     <div class="comments">
       <Comments
         v-for="review of event.reviews"
@@ -19,7 +23,6 @@
         :review="review"
       />
     </div>
-    
   </main>
 </template>
 
@@ -65,12 +68,44 @@ export default {
     },
     selectedEvent() {
       if (this.$route !== undefined) {
-        let data =  this.events.find((event) => event.id == this.$route.params.id);
+        let data = this.events.find(
+          (event) => event.id == this.$route.params.id
+        );
         return data;
       } else {
-        return this.eventInfo;
+        return {}
+        // return this.eventInfo;
       }
     },
   },
 };
 </script>
+<style>
+.eventInfo {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.meetupInfo {
+  margin-top: 15px;
+  padding: 0;
+  border-style: solid;
+  background-color: #c9c9c750;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.description {
+  padding: 30px 80px;
+  text-align: justify;
+}
+</style>

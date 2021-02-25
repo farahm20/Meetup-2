@@ -66,10 +66,34 @@ export default new Vuex.Store({
             } catch (error) {
                 console.log("Unable to submit", error)
             }
+        },
+        async addUserForEvent(ctx, value) {
+            console.log("in add user function store")
+            let options = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-Master-Key": ctx.state.apiKey,
+                    "X-Bin-Versioning": "false"
+                }
+            }
+            console.log("after headers", options);
+            try {
+                let data = await axios.put(`${ctx.state.apiUrl}`, {
+                    events: ctx.state.events,
+                    users: value
+                }, options)
+                ctx.commit('showEvents', data.data.record.events)
+                console.log('They data afte try', data)
+            } catch (error) {
+                console.log("Unable to submit", error)
+            }
         }
     },
-    modules: {
-        // eventService,
-
+    getters: {
+        // selectedEvent(state) {
+        //     let eventId = state.events.find((event) => event.id);
+        //     console.log(eventId)
+        //     return eventId;
+        // }
     }
 })

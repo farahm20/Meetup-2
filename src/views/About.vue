@@ -1,11 +1,11 @@
 <template>
   <section class = "about">
     <h1> How we arrange these meet ups </h1>
-    <p class="bold">
+    <h3 class="bold">
       <b>
         Meet people from all aroud the world and talk about what you love. 
       </b>
-    </p>
+    </h3>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, iusto.
       Veritatis, perspiciatis blanditiis reiciendis impedit asperiores illum
@@ -29,9 +29,7 @@ export default {
 </script>
 
 <style scoped>
-.bold {
-  -webkit-text-stroke: medium;
-}
+
 
 p {
   text-align: justify;
@@ -60,15 +58,18 @@ h3,
 p {
   color: black;
 }
+h1{
+  font-size: 30px;
+}
 
 h3 {
   margin: 0;
   padding: 0;
-  font-size: 1.4rem;
+  font-size: 20px;
 }
 
 .about {
-  padding: 20px;
+  padding: 50px;
 }
 
 .role {

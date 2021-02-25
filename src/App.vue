@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+    <header>
       <Navigation />
-   
+    </header>
     <router-view :events="events" />
   </div>
 </template>
@@ -40,7 +41,14 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-
+header {
+  background-color: white;
+  background-image: url("./assets/meetupbg.jpg");
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+  height: 450px;
+}
 #nav {
   padding: 30px;
 }

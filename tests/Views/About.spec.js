@@ -17,7 +17,7 @@ describe('About.vue', () => {
         const wrapper = shallowMount(About);
         const paragraphs = wrapper.findAll('p');
 
-        const expectedNumber = 3;
+        const expectedNumber = 2;
         const actualNumber = paragraphs.length
         expect(actualNumber).toBe(expectedNumber)
     })
