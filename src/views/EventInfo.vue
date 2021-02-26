@@ -66,7 +66,7 @@ export default {
           ? this.selectedEvent.description
           : "No description available",
       };
-      console.log(eventInfo);
+      // console.log(eventInfo);
       return eventInfo;
     },
     selectedEvent() {

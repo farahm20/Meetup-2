@@ -29,6 +29,7 @@ export default new Vuex.Store({
                     "Content-Type": "application/json",
                     "X-Master-Key": ctx.state.apiKey,
                     "X-Bin-Versioning": "false"
+            
                 }
             }
             let data = await axios.get(`${ctx.state.apiUrl}`, options)

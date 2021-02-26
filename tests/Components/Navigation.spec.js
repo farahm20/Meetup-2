@@ -2,7 +2,7 @@ import { shallowMount,mount, createLocalVue } from '@vue/test-utils';
 import Navigation from '@/components/Navigation.vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
-import index from '@/store/index.js'
+
 
 
 

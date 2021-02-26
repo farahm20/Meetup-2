@@ -32,29 +32,4 @@ describe('Event.vue', () => {
         expect(information).toMatch(expected);
     })
    
-    // it("It should have the component Signup", () => {
-    //     const localVue = createLocalVue()
-    //     localVue.use(Vuex)
-    //     const store = new Vuex.Store(index)
-
-    //     const wrapper = mount(EventInfo, {
-    //         store, 
-    //         localVue,
-    //     });
-
-    //     const SignupComponent = wrapper.findComponent({ name: 'Signup' });
-    //     console.log(SignupComponent);
-    //     expect(SignupComponent.exists()).toBe(true);
-    // })
-
-    // it("It should have the component Comments", () => {
-    //     const wrapper = mount(EventInfo, {
-    //         store, 
-    //         localVue,
-    //     });
-
-    //     const commentsComponent = wrapper.findComponent({ name: 'Comments' });
-    //     console.log(commentsComponent);
-    //     expect(commentsComponent.exists()).toBe(true);
-    // })
 })
