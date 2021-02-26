@@ -23,6 +23,9 @@
       <input type="text" placeholder="name" v-model="inputText.name" />
       <input type="text" placeholder="email" v-model="inputText.email" />
       <button class="sendUser" @click="sendUser()">Signup</button>
+      <h2 v-if="showConfirmation" class="confirmation">
+       Great. You are now registered for this event.
+      </h2>
     </div>
   </div>
 </template>
@@ -39,6 +42,7 @@ export default {
         email: "",
         comment: "",
       },
+      showConfirmation:false,
     };
   },
   methods: {
@@ -68,6 +72,7 @@ export default {
       console.log("User.", newUser);
      newUser.push(this.inputText);
         this.$store.dispatch("addUserForEvent", this.event);
+        this.showConfirmation = true; 
         this.clearInput();
       }
     },

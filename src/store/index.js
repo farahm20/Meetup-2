@@ -7,9 +7,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 
     state: {
-        // apiUrl: "https://api.jsonbin.io/b/602e519e0665b21b00b96d0d/4",
-        // apiUrl: "https://api.jsonbin.io/b/603577dbf1be644b0a63e406",
-        //example
         apiUrl: "https://api.jsonbin.io/v3/b/603577dbf1be644b0a63e406",
         apiKey: "$2b$10$jLA6wytLYVhKQGfD3ITFvuL/QNpWWaNMUAgAAwic4GMEK9KMqFzOu",
 

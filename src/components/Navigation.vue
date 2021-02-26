@@ -6,17 +6,14 @@
           <li class="logo"><a href="#" @click="goTo('/LogoInfo')"> Let's Meet! </a></li>
         </div>
         <div class="right">
-          <div
-            v-for="item in menuItems"
-            :key="item.title"
-            @click="goTo(`${item.link}`)"
-            class="items">
-            {{ item.title }}
-          </div>
+          <a href="#" class="meetups" @click="goTo('/events')"> Meetups</a>
+          <a href="#" class="about" @click="goTo('/')"> About</a>
+          <a href="#" class="login" @click="goTo('/login')"> Login</a>
+         
         </div>
       </ul>
     </nav>
-
+  
   </div>
 </template>
 
@@ -24,11 +21,7 @@
 export default {
   data() {
     return {
-      menuItems: [
-        { title: "MeetUps", link: "/events" },
-        { title: "About", link: "/" },
-        { title: "LogIn", link: "/login" },
-      ],
+     
     };
   },
   methods: {
