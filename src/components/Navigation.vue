@@ -31,7 +31,10 @@ export default {
       menuItems: [
         { title: "MeetUps", link: "/events" },
         { title: "About", link: "/" },
+        { title: "Profile", link: "/profile" },
+        { title: "SignUp", link: "/signup" },
         { title: "LogIn", link: "/login" },
+        { title: "SignIn", link: "/Signin" },
       ],
     };
   },

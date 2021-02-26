@@ -22,7 +22,7 @@
       <h2>Find it interesting. Join the Meetup!</h2>
       <input type="text" placeholder="name" v-model="inputText.name" />
       <input type="text" placeholder="email" v-model="inputText.email" />
-      <button class="sendUser" @clcik="sendUser()">Signup</button>
+      <button class="sendUser" @click="sendUser()">Signup</button>
     </div>
   </div>
 </template>
@@ -57,6 +57,7 @@ export default {
       }
     },
     sendUser() {
+        console.log("inside send user form")
       if (this.inputText.name >= 0) {
         alert("Name field cannot be left empty");
       } else if (this.inputText.email >= 0) {
@@ -64,7 +65,8 @@ export default {
       } else {
         console.log("Login user form.");
         let newUser = this.event.users;
-        newUser.push(this.inputText);
+      console.log("User.", newUser);
+     newUser.push(this.inputText);
         this.$store.dispatch("addUserForEvent", this.event);
         this.clearInput();
       }

@@ -59,6 +59,9 @@ export default {
         reviews: this.selectedEvent
           ? this.selectedEvent.reviews
           : "No reviews available",
+          users: this.selectedEvent
+          ? this.selectedEvent.users
+          : "No users available",
         description: this.selectedEvent
           ? this.selectedEvent.description
           : "No description available",
@@ -73,8 +76,8 @@ export default {
         );
         return data;
       } else {
-        return {}
-        // return this.eventInfo;
+        // return {}
+        return this.eventInfo;
       }
     },
   },

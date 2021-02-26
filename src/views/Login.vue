@@ -1,9 +1,9 @@
 <template>
   <div class="login">
     <h1>Log in</h1>
-    <label>Email address:</label>
+    <label class="email">Email address:</label>
     <input type="text" />
-    <label>Password:</label>
+    <label class="password">Password:</label>
     <input type="text" />
     <button class="login" @click="sendLogIn()">Log in</button>
   </div>
