@@ -1,7 +1,8 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils';
+import { shallowMount, mount,createLocalVue } from '@vue/test-utils';
 import AllEvents from '@/components/AllEvents.vue'
 import Vuex from 'vuex'
 import index from '@/store/index.js'
+import VueRouter from 'vue-router';
 
 describe('Event.vue', () => {
     it('It should display all events when the page is mounted.', () => {
@@ -82,7 +83,7 @@ describe('Event.vue', () => {
                     "id": 1,
                     "title": "Story behind the skyline in dersert.",
                     "image": "https://image.shutterstock.com/image-photo/aerial-panoramic-view-riyadh-city-600w-1582439176.jpg",
-                   
+
                 },
                 localVue,
                 store
@@ -103,7 +104,7 @@ describe('Event.vue', () => {
                 event: {
                     "id": 1,
                     "title": "Story behind the skyline in dersert.",
-                  
+
                 },
                 localVue,
                 store
@@ -113,13 +114,27 @@ describe('Event.vue', () => {
         const exploreButton = wrapper.findAll('button');
         const exploreButtonExist = exploreButton.exists();
 
-        console.log(exploreButton);
-        console.log(exploreButtonExist);
-
-
         expect(exploreButton).toBeTruthy();
         expect(exploreButtonExist).toBeTruthy();
     })
 
+    it('It should go to that particular event, when it is clicked', async () => {
+        const localVue = createLocalVue()
+        localVue.use(VueRouter)
+        const router = new VueRouter()
+        const wrapper = shallowMount(AllEvents, {
 
+            propsData: {
+                event: {
+                    "id": 1,
+                    "title": "Story behind the skyline in dersert.",
+                },
+            },
+            localVue,
+            router
+        })
+
+        await wrapper.find('.aboutEvent').trigger('click')
+        expect(wrapper.vm.$route.path).toBe('/eventInfo/1')
+    })
 })

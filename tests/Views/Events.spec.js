@@ -1,11 +1,13 @@
 import { createLocalVue, mount, shallowMount } from "@vue/test-utils";
+import Vuex from "vuex";
+import VueRouter from "vue-router";
+
 import Events from "@/views/Events.vue";
 import App from "@/App.vue";
 import index from "@/store/index.js";
-import Navigation from "@/components/Navigation.vue";
+import AllEvents from "@/components/AllEvents.vue";
 
-import Vuex from "vuex";
-import VueRouter from "vue-router";
+
 
 const store = new Vuex.Store({ index });
 
@@ -31,14 +33,74 @@ describe('Events.vue', () => {
         expect(actions.getAllEvents).toHaveBeenCalled();
     });
 
-    // it("It should have the component Navigation", () => {
+    it('calls filter when input is changed', () => {
+        const filter = jest.spyOn(Events.methods, 'filter');
+        const allEvents = [
+            {
+                "id": 1,
+                "title": "Story behind the skyline in dersert.",
+                "image": "https://image.shutterstock.com/image-photo/aerial-panoramic-view-riyadh-city-600w-1582439176.jpg",
+                "date": "2021-07-20",
+                "location": "Riyadh, Saudi Arabia",
+                "status": "ongoing",
+                "reviews": [],
+                "users": [
+                    {
+                        "name": "farah",
+                        "email": "farah@gmail.com",
+                        "comment": ""
+                    }
+                ],
+                "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio."
+            }
+        ];
+
+        const wrapper = shallowMount(Events, {
+            propsData: {
+                events: allEvents
+            }
+        });
+        const searchBox = wrapper.find('.search');
+
+        searchBox.trigger('input');
+        expect(filter).toHaveBeenCalled;
+        expect(wrapper.vm.$data.filteredList.length).toBe(1);
+    })
+
+    it("It should display filtered events when user types in search box.", () => {
+        const filter = jest.spyOn(Events.methods, 'filter')
+        const wrapper = shallowMount(Events, {
+            propsData: {
+                events: [
+                    {
+                        "id": 1,
+                        "title": "Story behind the skyline in dersert.",
+                        "image": "https://image.shutterstock.com/image-photo/aerial-panoramic-view-riyadh-city-600w-1582439176.jpg",
+                        "date": "2021-07-20",
+                        "location": "Riyadh, Saudi Arabia",
+                        "status": "ongoing",
+                    },
+                ]
+            },
+            localVue,
+            store
+        })
+
+        const inputBox = wrapper.find('input[type="text"]');
+        inputBox.setValue('Story');
+
+        expect(filter).toHaveBeenCalled();
+        expect(inputBox.element.value).toBe('Story');
+    })
+
+    // it("It should have the component AllEvents", () => {
     //     const wrapper = mount(Events, {
-    //         store, 
+    //         store,
     //         localVue,
     //     });
 
-    //     const navigationComponent = wrapper.findComponent({ name: 'Navigation' });
-    //     console.log(navigationComponent);
-    //     expect(navigationComponent.exists()).toBe(true);
+    //     const allEventsComponent = wrapper.findComponent(AllEvents);
+    //     console.log(allEventsComponent);
+    //     expect(allEventsComponent.exists()).toBe(true);
     // })
 })

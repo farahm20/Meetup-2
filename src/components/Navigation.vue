@@ -3,7 +3,7 @@
     <nav>
       <ul class="menu">
         <div class="left">
-          <li class="logo"><a href="#" @click="goTo('/')"> Let's Meet! </a></li>
+          <li class="logo"><a href="#" @click="goTo('/LogoInfo')"> Let's Meet! </a></li>
         </div>
         <div class="right">
           <div
@@ -16,11 +16,7 @@
         </div>
       </ul>
     </nav>
-    <div class="mainImage"></div>
-    <!-- <div class="navbuttons">
-      <button @click="goTo('/signup')" class="explore">Sign Up</button>
-      <button @click="goTo('/signin')" class="organize">Sign In</button>
-    </div> -->
+
   </div>
 </template>
 
@@ -31,10 +27,7 @@ export default {
       menuItems: [
         { title: "MeetUps", link: "/events" },
         { title: "About", link: "/" },
-        { title: "Profile", link: "/profile" },
-        { title: "SignUp", link: "/signup" },
         { title: "LogIn", link: "/login" },
-        { title: "SignIn", link: "/Signin" },
       ],
     };
   },

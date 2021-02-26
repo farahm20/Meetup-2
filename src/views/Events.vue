@@ -24,6 +24,10 @@
 <script>
 import AllEvents from "./../components/AllEvents";
 export default {
+  name: "Events",
+  components: {
+    AllEvents,
+  },
   props: {
     events: {},
   },
@@ -31,9 +35,6 @@ export default {
     search: "",
     filteredList: {},
   }),
-  components: {
-    AllEvents,
-  },
   methods: {
     filter() {
       if (
